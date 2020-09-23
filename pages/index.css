@@ -16,3 +16,6 @@
 
 @import url(../blocks/edit_btn/edit_btn.css);
 @import url(../blocks/add_btn/add_btn.css);
+
+@import url(../blocks/photo-grid/photo-grid.css);
+@import url(../blocks/photo-grid/_item/photo-grid_item.css);
