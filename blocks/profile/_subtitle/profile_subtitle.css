@@ -7,8 +7,10 @@
     grid-area: profile_subtitle;
 }
 
-@media screen and (max-width: 690px)    {
+@media screen and (max-width: 730px) {
     .profile_subtitle {
-        justify-self: center;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
     }
 }
