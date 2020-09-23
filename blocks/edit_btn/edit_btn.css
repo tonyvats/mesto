@@ -1,0 +1,6 @@
+.edit_btn {
+    width: 24px;
+    height: 24px;
+    grid-area: edit_btn;
+    margin-top: 19px;
+}

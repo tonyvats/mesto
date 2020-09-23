@@ -1,0 +1,23 @@
+.profile {
+    border: 1px solid red;
+    width: 100%;
+    max-width: 882px;
+    /* height: 120px; */
+    margin-top: 40px;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr;
+    grid-gap: 30px;
+    background-color: #000000;
+    
+}
+
+@media screen and (max-width: 690px)    {
+    .profile {
+        margin-top: 38px;
+        grid-template-columns:  1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 14px;
+    }
+}

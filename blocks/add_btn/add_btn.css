@@ -1,0 +1,13 @@
+.add_btn {
+    width: 150px;
+    height: 50px;
+    border: 1px solid red;
+    align-self: center;
+    justify-self: end;
+}
+
+@media screen and (max-width: 690px)    {
+    .add_btn {
+        justify-self: center;
+    }
+}

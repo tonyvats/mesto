@@ -1,0 +1,12 @@
+.profile_info {
+    width: 336px;
+    height: 77px;
+    border: 1px solid red;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "profile_title edit_btn"
+    "profile_subtitle .";
+}
