@@ -14,8 +14,13 @@
 @import url(../blocks/profile/_title/profile_title.css);
 @import url(../blocks/profile/_subtitle/profile_subtitle.css);
 
-@import url(../blocks/edit_btn/edit_btn.css);
-@import url(../blocks/add_btn/add_btn.css);
+@import url(../blocks/edit-btn/edit-btn.css);
+@import url(../blocks/add-btn/add-btn.css);
 
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/_item/photo-grid_item.css);
+@import url(../blocks/photo-grid/_image/photo-grid_image.css);
+@import url(../blocks/photo-grid/_rectangle/photo-grid_rectangle.css);
+@import url(../blocks/photo-grid/_title/photo-grid_title.css);
+
+@import url(../blocks/like-btn/like-btn.css);

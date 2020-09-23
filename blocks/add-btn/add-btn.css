@@ -1,0 +1,21 @@
+.add-btn {
+    width: 150px;
+    height: 50px;
+    /* border: 1px solid red; */
+    align-self: center;
+    justify-self: end;
+}
+
+/* @media screen and (max-width: 900px)    {
+    .add_btn {
+        margin-right: 20px;
+    }
+} */
+
+@media screen and (max-width: 730px) {
+    .add-btn {
+        justify-self: center;
+        width: 282px;
+        height: 50px;
+    }
+}
