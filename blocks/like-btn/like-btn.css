@@ -1,4 +1,7 @@
 .like-btn {
     width: 21px;
     height: 18px;
+    background: transparent;
+    border: none;
+    background-image: url(../../images/like.svg);
 }
