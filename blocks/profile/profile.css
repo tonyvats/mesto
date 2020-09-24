@@ -4,8 +4,10 @@
     max-width: 882px;
     box-sizing: border-box;
     margin-top: 40px;
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr;
     background-color: #000000;
     
 }
