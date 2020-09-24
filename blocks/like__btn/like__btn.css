@@ -1,8 +1,8 @@
-.like-btn {
+.like__btn {
     width: 21px;
     height: 18px;
     background: transparent;
     border: none;
     background-image: url(../../images/like.svg);
-    cursor: pointer;
+    cursor: pointer;    
 }

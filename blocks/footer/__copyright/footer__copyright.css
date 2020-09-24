@@ -1,4 +1,4 @@
-.footer_copyright {
+.footer__copyright {
     max-width: 318px;
     /* height: 18px; */
     color: #545454;
@@ -12,13 +12,13 @@
 }
 
 @media screen and (max-width: 960px)    {
-    .footer_copyright {
+    .footer__copyright {
         padding-bottom: 36px;
     }
 }
 
 @media screen and (max-width: 320px)    {
-    .logo {
+    .lfooter__copyrightogo {
         padding: 0px 19px 36px;
     }
 }

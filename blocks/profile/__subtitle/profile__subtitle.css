@@ -1,4 +1,4 @@
-.profile_subtitle {
+.profile__subtitle {
     color: white;
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-style: normal;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 730px) {
-    .profile_subtitle {
+    .profile__subtitle {
         font-size: 14px;
         line-height: 17px;
         text-align: center;

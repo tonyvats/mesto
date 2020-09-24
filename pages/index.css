@@ -12,22 +12,22 @@
 
 @import url(../blocks/avatar/avatar.css);
 
-@import url(../blocks/profile/_info/profile_info.css);
-@import url(../blocks/profile/_title/profile_title.css);
-@import url(../blocks/profile/_subtitle/profile_subtitle.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
 
-@import url(../blocks/edit-btn/edit-btn.css);
-@import url(../blocks/add-btn/add-btn.css);
+@import url(../blocks/edit__btn/edit__btn.css);
+@import url(../blocks/add__btn/add__btn.css);
 
 @import url(../blocks/plus/plus.css);
 
 @import url(../blocks/photo-grid/photo-grid.css);
-@import url(../blocks/photo-grid/_item/photo-grid_item.css);
-@import url(../blocks/photo-grid/_image/photo-grid_image.css);
-@import url(../blocks/photo-grid/_rectangle/photo-grid_rectangle.css);
-@import url(../blocks/photo-grid/_title/photo-grid_title.css);
+@import url(../blocks/photo-grid/__item/photo-grid__item.css);
+@import url(../blocks/photo-grid/__image/photo-grid__image.css);
+@import url(../blocks/photo-grid/__rectangle/photo-grid__rectangle.css);
+@import url(../blocks/photo-grid/__title/photo-grid__title.css);
 
-@import url(../blocks/like-btn/like-btn.css);
+@import url(../blocks/like__btn/like__btn.css);
 
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/_copyright/footer_copyright.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);

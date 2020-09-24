@@ -1,4 +1,4 @@
-.profile_title {
+.profile__title {
     max-width: 295px;
     color: white;
     font-family: 'Inter', ‘Arial’, sans-serif;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 730px) {
-    .profile_title {
+    .profile__title {
         font-weight: 500;
         font-size: 27px;
         line-height: 30px;

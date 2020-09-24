@@ -1,4 +1,4 @@
-.profile_info {
+.profile__info {
     width: 336px;
     /* border: 1px solid red; */
     align-self: center;
@@ -10,13 +10,13 @@
 }
 
 @media screen and (max-width: 900px) {
-    .profile_info {
+    .profile__info {
         padding: 0px;
     }
 }
 
 @media screen and (max-width: 730px) {
-    .profile_info {
+    .profile__info {
         width: 219px;
         grid-template-areas:
             "profile_title edit_btn"

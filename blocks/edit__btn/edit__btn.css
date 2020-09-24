@@ -1,4 +1,4 @@
-.edit-btn {
+.edit__btn {
     width: 24px;
     height: 24px;
     grid-area: edit_btn;
@@ -9,13 +9,13 @@
     cursor: pointer;
 }
 
-.edit-btn:hover {
+.edit__btn:hover {
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-sizing: border-box;
   }
 
 @media screen and (max-width: 730px) {
-    .edit-btn {
+    .edit__btn {
         margin: 0px;
         align-self: end;
         width: 18px;
