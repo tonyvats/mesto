@@ -1,6 +1,8 @@
 .profile_title {
     max-width: 295px;
     color: white;
+    font-family: Inter;
+    font-style: normal;
     font-weight: 500;
     font-size: 42px;
     line-height: 56px;
