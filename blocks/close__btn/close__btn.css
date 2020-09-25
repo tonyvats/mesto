@@ -1,5 +1,12 @@
 .close__btn {
-    position:fixed;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    background-image: url(../../images/close_icon.svg);
+    background-size: cover;
     top: 0;
-    left: 0;
+    right: 0;
+    position: absolute;
+
 }
