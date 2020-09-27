@@ -4,7 +4,7 @@
     box-sizing: border-box;
     display: flex;
     background-color: #000000;
-    border-bottom: 1px solid #545454;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);;
     padding-top: 45px;
 }
 
