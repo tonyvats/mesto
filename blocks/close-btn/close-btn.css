@@ -1,4 +1,4 @@
-.close__btn {
+.close-btn {
     width: 40px;
     height: 40px;
     background: rgba(0, 0, 0, 0);
@@ -11,12 +11,12 @@
     cursor: pointer;
 }
 
-.close__btn:hover {
+.close-btn:hover {
     opacity: 0.6;
   }
 
   @media screen and (max-width: 475px) {
-    .close__btn {
+    .close-btn {
         width: 16px;
         height: 16px;
         margin-right: 5px;

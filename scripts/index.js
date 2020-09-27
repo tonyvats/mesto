@@ -1,12 +1,12 @@
 // let container = document.querySelector('.content');
-let editButton = document.querySelector('.edit__btn');
+let editButton = document.querySelector('.edit-btn');
 
 let editPopup = document.querySelector('.popup');
 let editPopupContainer = document.querySelector('.popup__container');
-let clsButton = document.querySelector('.close__btn');
+let clsButton = document.querySelector('.close-btn');
 
 let formElement = document.querySelector('.form-element');
-let saveButton = document.querySelector('.save__btn');
+let saveButton = document.querySelector('.save-btn');
 
 
 function openPopup() {
@@ -40,4 +40,6 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 editButton.addEventListener('click', openPopup);
+
 clsButton.addEventListener('click', closePopup);
+console.log(clsButton.addEventListener('click', closePopup));
