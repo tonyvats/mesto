@@ -1,12 +1,10 @@
 .header {
     width: 100%;
     max-width: 882px;
-    /* height: 74px; */
     box-sizing: border-box;
     display: flex;
     background-color: #000000;
     border-bottom: 1px solid #545454;
-    /* border: 1px solid red; */
     padding-top: 45px;
 }
 
