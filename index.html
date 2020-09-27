@@ -17,7 +17,9 @@
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <h3 class="profile__subtitle">Исследователь океана</h3>
-                    <button class="edit__btn"><img src="./images/pencil.svg"></button>
+                    <button class="edit__btn">
+                        <img src="./images/pencil.svg" class="edit__btn_image">
+                    </button>
                 </div>
                 <button class="add__btn"><img class="plus" src="./images/plus.svg" alt="изображение плюса"></button>
             </div>
@@ -71,15 +73,18 @@
         </footer>
         <div class="popup">
             <div class="popup__container">
-                <button class="close__btn"></button> 
+                <button class="close__btn "></button> 
                 <div class="popup__content">
                     <div class="popup__title">Редактировать профиль</div>
-                    <input type="text" placeholder="Название" class="popup__text">
-                    <input type="text" placeholder="Название" class="popup__text">  
-                    <button class="save__btn">Сохранить</button>                     
+                    <form class="form-element">
+                        <input type="text" value="Жак-Ив Кусто" class="popup__input popup__input_name">
+                        <input type="text" value="Исследователь океана" class="popup__input popup__input_job">  
+                        <input type="submit" value="Отправить" class="save__btn"></button> 
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

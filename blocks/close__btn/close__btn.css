@@ -8,9 +8,16 @@
     top: 0;
     right: 0;
     position: absolute;
+    cursor: pointer;
 }
 
 .close__btn:hover {
-    /* background: rgba(255, 255, 255, 0.6); */
     opacity: 0.6;
   }
+
+  @media screen and (max-width: 475px) {
+    .close__btn {
+        width: 16px;
+        height: 16px;
+    }
+}
