@@ -5,7 +5,7 @@
     border-radius: 2px;
     margin: 18px 36px 36px;
     padding: 0px;
-    font-family: Inter;
+    font-family: 'Inter', ‘Arial’, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -13,11 +13,11 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    border: none;
 }
 
 .popup__save-btn:hover {
     background: rgba(0, 0, 0, 0.8);
-    border-radius: 2px;
 }
 
 @media screen and (max-width: 475px) {

@@ -3,10 +3,11 @@
     max-width: 882px;
     box-sizing: border-box;
     display: flex;
+    padding-bottom: 60px;
 }
 
 @media screen and (max-width: 960px) {
     .footer {
-        padding: 28px 27px 0px;
+        padding: 0px 27px 36px;
     }
 }

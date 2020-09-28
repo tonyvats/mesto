@@ -1,6 +1,5 @@
 .profile__info {
     width: 336px;
-    /* border: 1px solid red; */
     align-self: center;
     display: grid;
     grid-template-areas:

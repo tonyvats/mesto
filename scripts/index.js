@@ -14,8 +14,10 @@ let jobInput = document.querySelector('.popup__input_job');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitile = document.querySelector('.profile__subtitle');
 
-let nameProfile = nameInput.value;
-let jobProfile = jobInput.value;
+// let nameProfile = nameInput.value;
+// console.log(profileTitle);
+
+// let jobProfile = jobInput.value;
 
 function openPopup() {
     editPopup.classList.add('popup_opened');
@@ -32,6 +34,7 @@ function formSubmitHandler (evt) {
     let jobProfile = jobInput.value;
 
     profileTitle.textContent = nameProfile;
+    console.log(profileTitle);
     profileSubtitile.textContent = jobProfile; 
     
     closePopup();
