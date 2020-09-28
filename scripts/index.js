@@ -37,4 +37,3 @@ formElement.addEventListener('submit', formSubmitHandler);
 editButton.addEventListener('click', openPopup);
 
 clsButton.addEventListener('click', closePopup);
-console.log(clsButton.addEventListener('click', closePopup));
