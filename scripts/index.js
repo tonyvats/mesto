@@ -1,4 +1,3 @@
-// let container = document.querySelector('.content');
 let editButton = document.querySelector('.profile__edit-btn');
 
 let editPopup = document.querySelector('.popup');
