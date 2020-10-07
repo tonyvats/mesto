@@ -1,20 +1,13 @@
 .footer__copyright {
     max-width: 318px;
-    /* height: 18px; */
     color: #545454;
     margin: 0px;
-    padding-bottom: 60px; 
     font-family: 'Inter', ‘Arial’, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
-}
-
-@media screen and (max-width: 960px)    {
-    .footer__copyright {
-        padding-bottom: 36px;
-    }
+    align-self: start;
 }
 
 @media screen and (max-width: 320px)    {

@@ -7,6 +7,9 @@
     line-height: 22px;
     margin: 0px;
     grid-area: profile_subtitle;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden;
 }
 
 @media screen and (max-width: 730px) {

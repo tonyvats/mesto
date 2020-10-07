@@ -1,4 +1,4 @@
-.avatar {
+.profile__avatar {
     width: 120px;
     height: 120px;
     overflow: hidden;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 730px) {
-    .avatar {
+    .profile__avatar {
         justify-self: center;
         padding-right: 0px;
     }

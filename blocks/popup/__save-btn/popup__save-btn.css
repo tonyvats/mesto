@@ -1,11 +1,11 @@
-.save__btn {
+.popup__save-btn {
     width: 358px;
     height: 50px;
     background: #000000;
     border-radius: 2px;
     margin: 18px 36px 36px;
     padding: 0px;
-    font-family: Inter;
+    font-family: 'Inter', ‘Arial’, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -13,15 +13,15 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    border: none;
 }
 
-.save__btn:hover {
+.popup__save-btn:hover {
     background: rgba(0, 0, 0, 0.8);
-    border-radius: 2px;
 }
 
 @media screen and (max-width: 475px) {
-    .save__btn {
+    .popup__save-btn {
         width: 238px;
         margin: 15px 22px 25px;
     }
