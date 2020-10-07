@@ -1,11 +1,10 @@
 .profile {
-    /* border: 1px solid red; */
     width: 100%;
     max-width: 882px;
     box-sizing: border-box;
     margin-top: 40px;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr;
     background-color: #000000;
     
 }
@@ -18,8 +17,6 @@
 
 @media screen and (max-width: 900px) {
     .profile {
-        display: grid;
-        grid-template-columns: 120px 1fr 1fr;
         grid-gap: 30px;
     }
 }

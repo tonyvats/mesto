@@ -38,7 +38,7 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitile.textContent = jobInput.value; 
-    closePopup();
+    closePopup(popup);
 }
 
 function likePucture(evt) {
@@ -60,4 +60,3 @@ editButton.addEventListener('click', () => openPopup(editPopupContainer));
 
 clsButtonEdit.addEventListener('click', () => closePopup(editPopupContainer));
 clsButtonUpdate.addEventListener('click', () => closePopup(updatePopupContainer));
-

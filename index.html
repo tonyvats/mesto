@@ -12,62 +12,91 @@
             <img class="logo" src="./images/logo.svg" alt="изображение лого">
         </header>
         <main class="content">
-            <div class="profile">
-                <img class="avatar" src="./images/vicky-hladynets-oiW-0eP_KsI-unsplash.jpg" alt="фото аватара">
-                <div class="profile_info">
-                    <h1 class="profile_title">Жак-Ив Кусто</h1>
-                    <h3 class="profile_subtitle">Исследователь океана</h3>
-                    <button class="edit-btn"></button>
+            <section class="profile">
+                <img class="profile__avatar" src="./images/vicky-hladynets-oiW-0eP_KsI-unsplash.jpg" alt="фото аватара">
+                <div class="profile__info">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                    <button type="button" class="profile__edit-btn"></button>
                 </div>
-                <button class="add-btn"></button>
-            </div>
-            <div class="photo-grid">
-                <div class="photo-grid_item">
-                    <img class="photo-grid_image" src="./images/1.jpg" alt="фото">
-                    <div class="photo-grid_rectangle">
-                        <div class="photo-grid_title">Карачаевск</div>
-                        <button class="like-btn"></button>
+                <button type="button" class="profile__add-btn"></button>
+            </section>
+            <section class="photo-grid">
+                <div class="photo-grid__item">
+                    <img class="photo-grid__image" src="./images/1.jpg" alt="фото">
+                    <div class="photo-grid__rectangle">
+                        <h2 class="photo-grid__title">Карачаевск</h2>
+                        <button type="button" class="photo-grid__like-btn"></button>
                     </div> 
                 </div>
-                <div class="photo-grid_item">
-                    <img class="photo-grid_image" src="./images/2.jpg" alt="фото">
-                    <div class="photo-grid_rectangle">
-                        <div class="photo-grid_title">Гора Эльбрус</div>
-                        <button class="like-btn"></button>
+                <div class="photo-grid__item">
+                    <img class="photo-grid__image" src="./images/2.jpg" alt="фото">
+                    <div class="photo-grid__rectangle">
+                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
+                        <button type="button" class="photo-grid__like-btn"></button>
                     </div> 
                 </div>
-                <div class="photo-grid_item">
-                    <img class="photo-grid_image" src="./images/3.jpg" alt="фото">
-                    <div class="photo-grid_rectangle">
-                        <div class="photo-grid_title">Домбай</div>
-                        <button class="like-btn"></button>
+                <div class="photo-grid__item">
+                    <img class="photo-grid__image" src="./images/3.jpg" alt="фото">
+                    <div class="photo-grid__rectangle">
+                        <h2 class="photo-grid__title">Домбай</h2>
+                        <button type="button" class="photo-grid__like-btn"></button>
                     </div> 
                 </div>
-                <div class="photo-grid_item">
-                    <img class="photo-grid_image" src="./images/4.jpg" alt="фото">
-                    <div class="photo-grid_rectangle">
-                        <div class="photo-grid_title">Гора Эльбрус</div>
-                        <button class="like-btn"></button>
+                <div class="photo-grid__item">
+                    <img class="photo-grid__image" src="./images/4.jpg" alt="фото">
+                    <div class="photo-grid__rectangle">
+                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
+                        <button type="button" class="photo-grid__like-btn"></button>
                     </div> 
                 </div>
-                <div class="photo-grid_item">
-                    <img class="photo-grid_image" src="./images/5.jpg" alt="фото">
-                    <div class="photo-grid_rectangle">
-                        <div class="photo-grid_title">Домбай</div>
-                        <button class="like-btn"></button>
+                <div class="photo-grid__item">
+                    <img class="photo-grid__image" src="./images/5.jpg" alt="фото">
+                    <div class="photo-grid__rectangle">
+                        <h2 class="photo-grid__title">Домбай</h2>
+                        <button type="button" class="photo-grid__like-btn"></button>
                     </div> 
                 </div>
-                <div class="photo-grid_item">
-                    <img class="photo-grid_image" src="./images/6.jpg" alt="фото">
-                    <div class="photo-grid_rectangle">
-                        <div class="photo-grid_title">Карачаево-Ч...</div>
-                        <button class="like-btn"></button>
+                <div class="photo-grid__item">
+                    <img class="photo-grid__image" src="./images/6.jpg" alt="фото">
+                    <div class="photo-grid__rectangle">
+                        <h2 class="photo-grid__title">Карачаево-Ч...</h2>
+                        <button type="button" class="photo-grid__like-btn"></button>
                     </div> 
                 </div>
-            </div>
+            </section>
         </main>
-        <!-- <footer class="footer"> 
-        </footer> -->
+        <footer class="footer"> 
+            <p class="footer__copyright">&copy;&#160;2020 Mesto Russia</p>
+        </footer>
+        <div class="popup popup_edit">
+            <div class="popup__container">
+                <button type="button" class="popup__close-btn popup__close-btn_edit"></button> 
+                <div class="popup__content">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <form name="form" action="" method="POST" class="popup__form">
+                        <input type="text" name="popup__input_name" value="" class="popup__input popup__input_name">
+                        <input type="text" name="popup__input_job" value="" class="popup__input popup__input_job">  
+                        <button type="submit" class="popup__save-btn">Отправить</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup popup_update">
+            <div class="popup__container">
+                <button type="button" class="popup__close-btn popup__close-btn_update"></button> 
+                <div class="popup__content">
+                    <h2 class="popup__title">Новое место</h2>
+                    <form name="form" action="" method="POST" class="popup__form">
+                        <input type="text" name="popup__input_name" value="" class="popup__input popup__input_name">
+                        <input type="text" name="popup__input_job" value="" class="popup__input popup__input_job">  
+                        <button type="submit" class="popup__save-btn">Создать</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 @import url(../vendor/normalize.css);
 
+@import url(../vendor/fonts/inter_web/font.css);
+
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/header/header.css);
@@ -8,19 +10,31 @@
 
 @import url(../blocks/profile/profile.css);
 
-@import url(../blocks/avatar/avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
+@import url(../blocks/profile/__add-btn/profile__add-btn.css);
 
-@import url(../blocks/profile/_info/profile_info.css);
-@import url(../blocks/profile/_title/profile_title.css);
-@import url(../blocks/profile/_subtitle/profile_subtitle.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 
-@import url(../blocks/edit-btn/edit-btn.css);
-@import url(../blocks/add-btn/add-btn.css);
+@import url(../blocks/popup/__container/popup__container.css);
+
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__save-btn/popup__save-btn.css);
 
 @import url(../blocks/photo-grid/photo-grid.css);
-@import url(../blocks/photo-grid/_item/photo-grid_item.css);
-@import url(../blocks/photo-grid/_image/photo-grid_image.css);
-@import url(../blocks/photo-grid/_rectangle/photo-grid_rectangle.css);
-@import url(../blocks/photo-grid/_title/photo-grid_title.css);
+@import url(../blocks/photo-grid/__item/photo-grid__item.css);
+@import url(../blocks/photo-grid/__image/photo-grid__image.css);
+@import url(../blocks/photo-grid/__rectangle/photo-grid__rectangle.css);
+@import url(../blocks/photo-grid/__title/photo-grid__title.css);
+@import url(../blocks/photo-grid/__like-btn/photo-grid__like-btn.css);
+@import url(../blocks/photo-grid/__like-btn/_active/photo-grid__like-btn_active.css);
 
-@import url(../blocks/like-btn/like-btn.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
