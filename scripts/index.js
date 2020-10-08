@@ -23,6 +23,7 @@ let profileSubtitile = document.querySelector('.profile__subtitle');
 let addButton = document.querySelector('.profile__add-btn');
 
 let photoGrid = document.querySelector('.photo-grid');
+// let photoGridItem = document.querySelector('photo-grid__item');
 
 
 const initialCards = [
@@ -77,6 +78,8 @@ function renderCard(array) {
     }
 }
 
+renderCard(initialCards);
+
 function openPopup(item) {
     if (item.classList.contains('popup_update')){
         item.classList.add('popup_opened');
@@ -107,6 +110,13 @@ function addCard (evt) {
     closePopup(updatePopupContainer);
 }
 
+let deleteButton = photoGrid.querySelector('.photo-grid__delete-btn');
+
+deleteButton.addEventListener('click', function () {
+  let listItem = deleteButton.closest('.photo-grid__item');
+  listItem.remove();
+}); 
+
 
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
@@ -117,4 +127,4 @@ editButton.addEventListener('click', () => openPopup(editPopupContainer));
 clsButtonEdit.addEventListener('click', () => closePopup(editPopupContainer));
 clsButtonUpdate.addEventListener('click', () => closePopup(updatePopupContainer));
 
-renderCard(initialCards);
+
