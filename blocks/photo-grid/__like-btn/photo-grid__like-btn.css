@@ -5,6 +5,7 @@
     border: none;
     background-image: url(../../../images/like.svg);
     cursor: pointer;    
+    
 }
 
 .photo-grid__like-btn:hover {
