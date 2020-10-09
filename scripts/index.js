@@ -32,7 +32,7 @@ let profileSubtitile = document.querySelector('.profile__subtitle');
 //Грид
 let photoGrid = document.querySelector('.photo-grid');
 
-
+//Мок данных пока не подключили сервер
 const initialCards = [
     {
         name: 'Архыз',
@@ -61,11 +61,14 @@ const initialCards = [
 ];
 
 function creatGridItem(nameElement, linkElement) {
+    //создал и склонировал template блок
     const photoGridItemTemplate = document.querySelector('#photo-grid__item-template').content;
     const photoGridItem = photoGridItemTemplate.cloneNode(true);
     photoGridItem.querySelector('.photo-grid__image').src = linkElement;
     photoGridItem.querySelector('.photo-grid__title').textContent = nameElement;
     
+    //Кнопки лайка, удаления и фулскрина создаю здесь. Кажется, так логичнее.
+    //Функция создает карточку и сразу все неоходимые кнопки. В итоге у каждой карточки своя кнопка. 
     const likeButton = photoGridItem.querySelector('.photo-grid__like-btn');
     likeButton.addEventListener('click', function (evt) {
         evt.target.classList.toggle('photo-grid__like-btn_active')
@@ -85,12 +88,12 @@ function creatGridItem(nameElement, linkElement) {
     });
 
     clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
-    // imageButton.addEventListener('click', () => openPopup(fullScreenPopupContainer));
 
-
+    //Добавляю новую карточку в конец грида
     photoGrid.prepend(photoGridItem);
 }
 
+//Функция создания карточки
 function renderCard(array) {
 
     for (let i=0; i < array.length; i++){
@@ -101,8 +104,10 @@ function renderCard(array) {
     }
 }
 
+//Вызов функции создания карточки
 renderCard(initialCards);
 
+//Функция открытия попап
 function openPopup(item) {
     if (item.classList.contains('popup_update')){
         item.classList.add('popup_opened');
@@ -113,10 +118,12 @@ function openPopup(item) {
     } 
 }
 
+//Функция закрытия попапа
 function closePopup(item) {
     item.classList.remove('popup_opened');
 }
 
+//Функция для редактирования формы профиля
 function editProfile (evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
@@ -124,6 +131,7 @@ function editProfile (evt) {
     closePopup(editPopupContainer);
 }
 
+//Функция на добавление новой карточки
 function addCard (evt) {
     evt.preventDefault();
     let strObject = {};
@@ -133,6 +141,7 @@ function addCard (evt) {
     closePopup(updatePopupContainer);
 }
 
+//Вешаю обработчики на кнопки
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
 
