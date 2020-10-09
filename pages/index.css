@@ -23,6 +23,9 @@
 @import url(../blocks/popup/__container/popup__container.css);
 
 @import url(../blocks/popup/__content/popup__content.css);
+/* @import url(../blocks/popup/__content/_photo-fullscreen/popup__content_photo-fullscreen.css); */
+@import url(../blocks/popup/__photo-fullscreen/popup__photo-fullscreen.css);
+@import url(../blocks/popup/__photo-title/popup__photo-title.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);

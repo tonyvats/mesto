@@ -1,28 +1,37 @@
+// Кнопки
 let editButton = document.querySelector('.profile__edit-btn');
+let addButton = document.querySelector('.profile__add-btn');
+let saveButton = document.querySelector('.save__btn');
+let clsButtonEdit = document.querySelector('.popup__close-btn_edit');
+let clsButtonUpdate = document.querySelector('.popup__close-btn_update');
+let clsButtonFullScreen = document.querySelector('.popup__close-btn_photo-fullscreen');
 
+// Попапы
 let popup = document.querySelector('.popup');
 let editPopupContainer = document.querySelector('.popup_edit');
 let updatePopupContainer = document.querySelector('.popup_update');
+let popupFullScreen = document.querySelector('.popup__photo-fullscreen');
+let popupPhotoContainer = document.querySelector('.popup__photo');
+let popupPhotoTitle = document.querySelector('.popup__photo-title');
 
-let clsButtonEdit = document.querySelector('.popup__close-btn_edit');
-let clsButtonUpdate = document.querySelector('.popup__close-btn_update');
 
+//Формы
 let popupFormEdit = document.querySelector('.popup__form_edit');
 let popupFormUpdate = document.querySelector('.popup__form_update');
-let saveButton = document.querySelector('.save__btn');
 
+//Инпуты
 let nameInput = document.querySelector('.popup__input_name');
 let jobInput = document.querySelector('.popup__input_job');
-
 let titleInput = document.querySelector('.popup__input_title');
 let linkInput = document.querySelector('.popup__input_link');
 
+//Профиль
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitile = document.querySelector('.profile__subtitle');
 
-let addButton = document.querySelector('.profile__add-btn');
-
+//Грид
 let photoGrid = document.querySelector('.photo-grid');
+
 
 const initialCards = [
     {
@@ -68,6 +77,17 @@ function creatGridItem(nameElement, linkElement) {
         listItem.remove();
     });
 
+    const imageButton = photoGridItem.querySelector('.photo-grid__image'); 
+    imageButton.addEventListener('click', function () {
+        popupFullScreen.src = linkElement;
+        popupPhotoTitle.textContent = nameElement;
+        popupPhotoContainer.classList.add('popup_opened');
+    });
+
+    clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
+    // imageButton.addEventListener('click', () => openPopup(fullScreenPopupContainer));
+
+
     photoGrid.prepend(photoGridItem);
 }
 
@@ -90,7 +110,7 @@ function openPopup(item) {
         item.classList.add('popup_opened');
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitile.textContent;
-    }
+    } 
 }
 
 function closePopup(item) {
