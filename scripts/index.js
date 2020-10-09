@@ -23,8 +23,6 @@ let profileSubtitile = document.querySelector('.profile__subtitle');
 let addButton = document.querySelector('.profile__add-btn');
 
 let photoGrid = document.querySelector('.photo-grid');
-// let photoGridItem = document.querySelector('photo-grid__item');
-
 
 const initialCards = [
     {
@@ -64,8 +62,13 @@ function creatGridItem(nameElement, linkElement) {
         evt.target.classList.toggle('photo-grid__like-btn_active')
     }); 
 
-    photoGrid.prepend(photoGridItem);
+    const deleteButton = photoGridItem.querySelector('.photo-grid__delete-btn');
+    deleteButton.addEventListener('click', function () {
+        let listItem = deleteButton.closest('.photo-grid__item');    
+        listItem.remove();
+    });
 
+    photoGrid.prepend(photoGridItem);
 }
 
 function renderCard(array) {
@@ -109,14 +112,6 @@ function addCard (evt) {
     creatGridItem(strObject['name'], strObject['link']);
     closePopup(updatePopupContainer);
 }
-
-let deleteButton = photoGrid.querySelector('.photo-grid__delete-btn');
-
-deleteButton.addEventListener('click', function () {
-  let listItem = deleteButton.closest('.photo-grid__item');
-  listItem.remove();
-}); 
-
 
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
