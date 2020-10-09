@@ -89,7 +89,7 @@ function creatGridItem(nameElement, linkElement) {
 
     clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
 
-    //Добавляю новую карточку в конец грида
+    //Добавляю новую карточку в начало грида
     photoGrid.prepend(photoGridItem);
 }
 
