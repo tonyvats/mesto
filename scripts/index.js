@@ -1,36 +1,37 @@
 // Кнопки
-let editButton = document.querySelector('.profile__edit-btn');
-let addButton = document.querySelector('.profile__add-btn');
-let saveButton = document.querySelector('.save__btn');
-let clsButtonEdit = document.querySelector('.popup__close-btn_edit');
-let clsButtonUpdate = document.querySelector('.popup__close-btn_update');
-let clsButtonFullScreen = document.querySelector('.popup__close-btn_photo-fullscreen');
+const editButton = document.querySelector('.profile__edit-btn');
+const addButton = document.querySelector('.profile__add-btn');
+const clsButtonEdit = document.querySelector('.popup__close-btn_edit');
+const clsButtonUpdate = document.querySelector('.popup__close-btn_update');
+const clsButtonFullScreen = document.querySelector('.popup__close-btn_photo-fullscreen');
 
 // Попапы
-let popup = document.querySelector('.popup');
-let editPopupContainer = document.querySelector('.popup_edit');
-let updatePopupContainer = document.querySelector('.popup_update');
-let popupFullScreen = document.querySelector('.popup__photo-fullscreen');
-let popupPhotoContainer = document.querySelector('.popup__photo');
-let popupPhotoTitle = document.querySelector('.popup__photo-title');
+const editPopupContainer = document.querySelector('.popup_edit');
+const updatePopupContainer = document.querySelector('.popup_update');
+const popupFullScreen = document.querySelector('.popup__photo-fullscreen');
+const popupPhotoContainer = document.querySelector('.popup__photo');
+const popupPhotoTitle = document.querySelector('.popup__photo-title');
 
 
 //Формы
-let popupFormEdit = document.querySelector('.popup__form_edit');
-let popupFormUpdate = document.querySelector('.popup__form_update');
+const popupFormEdit = document.querySelector('.popup__form_edit');
+const popupFormUpdate = document.querySelector('.popup__form_update');
 
 //Инпуты
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_job');
-let titleInput = document.querySelector('.popup__input_title');
-let linkInput = document.querySelector('.popup__input_link');
+const nameInput = document.querySelector('.popup__input_name');
+const jobInput = document.querySelector('.popup__input_job');
+const titleInput = document.querySelector('.popup__input_title');
+const linkInput = document.querySelector('.popup__input_link');
 
 //Профиль
-let profileTitle = document.querySelector('.profile__title');
-let profileSubtitile = document.querySelector('.profile__subtitle');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
 
 //Грид
-let photoGrid = document.querySelector('.photo-grid');
+const photoGrid = document.querySelector('.photo-grid');
+const photoGridItemTemplate = document.querySelector('#photo-grid__item-template').content;
+// const photoGridItem = photoGridItemTemplate.cloneNode(true);
+
 
 //Мок данных пока не подключили сервер
 const initialCards = [
@@ -60,9 +61,9 @@ const initialCards = [
     }
 ];
 
+
 function creatGridItem(nameElement, linkElement) {
-    //создал и склонировал template блок
-    const photoGridItemTemplate = document.querySelector('#photo-grid__item-template').content;
+    //клонируем template блок
     const photoGridItem = photoGridItemTemplate.cloneNode(true);
     photoGridItem.querySelector('.photo-grid__image').src = linkElement;
     photoGridItem.querySelector('.photo-grid__title').textContent = nameElement;
@@ -76,7 +77,7 @@ function creatGridItem(nameElement, linkElement) {
 
     const deleteButton = photoGridItem.querySelector('.photo-grid__delete-btn');
     deleteButton.addEventListener('click', function () {
-        let listItem = deleteButton.closest('.photo-grid__item');    
+        const listItem = deleteButton.closest('.photo-grid__item');    
         listItem.remove();
     });
 
@@ -84,24 +85,24 @@ function creatGridItem(nameElement, linkElement) {
     imageButton.addEventListener('click', function () {
         popupFullScreen.src = linkElement;
         popupPhotoTitle.textContent = nameElement;
-        popupPhotoContainer.classList.add('popup_opened');
+        openPopup(popupPhotoContainer);
     });
 
-    clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
-
     //Добавляю новую карточку в начало грида
-    photoGrid.prepend(photoGridItem);
+
+    return photoGridItem;
+    // photoGrid.prepend(photoGridItem);
 }
+
+
 
 //Функция создания карточки
 function renderCard(array) {
-
-    for (let i=0; i < array.length; i++){
-        const arrayElement = array[i];
-        const nameElement = arrayElement.name;
-        const linkElement = arrayElement.link;
-        creatGridItem(nameElement, linkElement);
-    }
+    array.forEach(element => {
+        const nameElement = element.name;
+        const linkElement = element.link;
+        photoGrid.append(creatGridItem(nameElement, linkElement));
+    });
 }
 
 //Вызов функции создания карточки
@@ -114,8 +115,10 @@ function openPopup(item) {
     } else if (item.classList.contains('popup_edit')) {
         item.classList.add('popup_opened');
         nameInput.value = profileTitle.textContent;
-        jobInput.value = profileSubtitile.textContent;
-    } 
+        jobInput.value = profileSubtitle.textContent;
+    } else if (item.classList.contains('popup__photo')){
+        item.classList.add('popup_opened');
+    }
 }
 
 //Функция закрытия попапа
@@ -127,17 +130,16 @@ function closePopup(item) {
 function editProfile (evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
-    profileSubtitile.textContent = jobInput.value; 
+    profileSubtitle.textContent = jobInput.value; 
     closePopup(editPopupContainer);
 }
 
 //Функция на добавление новой карточки
 function addCard (evt) {
     evt.preventDefault();
-    let strObject = {};
-    strObject['name'] = titleInput.value;
-    strObject['link'] = linkInput.value;
-    creatGridItem(strObject['name'], strObject['link']);
+    photoGrid.prepend(creatGridItem(titleInput.value, linkInput.value));
+    titleInput.value = "";
+    linkInput.value = "";
     closePopup(updatePopupContainer);
 }
 
@@ -148,5 +150,6 @@ popupFormUpdate.addEventListener('submit', addCard);
 addButton.addEventListener('click', () => openPopup(updatePopupContainer));
 editButton.addEventListener('click', () => openPopup(editPopupContainer));
 
+clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
 clsButtonEdit.addEventListener('click', () => closePopup(editPopupContainer));
 clsButtonUpdate.addEventListener('click', () => closePopup(updatePopupContainer));
