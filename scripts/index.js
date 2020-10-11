@@ -94,9 +94,7 @@ function creatGridItem(nameElement, linkElement) {
 //Функция создания карточки
 function renderCard(array) {
     array.forEach(element => {
-        const nameElement = element.name;
-        const linkElement = element.link;
-        photoGrid.append(creatGridItem(nameElement, linkElement));
+        photoGrid.append(creatGridItem(element.name, element.link));
     });
 }
 
@@ -105,9 +103,7 @@ renderCard(initialCards);
 
 //Функция открытия попап
 function openPopup(item) {
-    (item.classList.contains('popup_update')) ? item.classList.add('popup_opened') :
-        (item.classList.contains('popup_edit')) ? item.classList.add('popup_opened') :
-        item.classList.add('popup_opened');
+    item.classList.add('popup_opened')
 }
 
 //Функция закрытия попапа
