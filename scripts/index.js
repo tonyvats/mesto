@@ -88,13 +88,8 @@ function creatGridItem(nameElement, linkElement) {
         openPopup(popupPhotoContainer);
     });
 
-    //Добавляю новую карточку в начало грида
-
     return photoGridItem;
-    // photoGrid.prepend(photoGridItem);
 }
-
-
 
 //Функция создания карточки
 function renderCard(array) {
@@ -110,15 +105,9 @@ renderCard(initialCards);
 
 //Функция открытия попап
 function openPopup(item) {
-    if (item.classList.contains('popup_update')){
+    (item.classList.contains('popup_update')) ? item.classList.add('popup_opened') :
+        (item.classList.contains('popup_edit')) ? item.classList.add('popup_opened') :
         item.classList.add('popup_opened');
-    } else if (item.classList.contains('popup_edit')) {
-        item.classList.add('popup_opened');
-        nameInput.value = profileTitle.textContent;
-        jobInput.value = profileSubtitle.textContent;
-    } else if (item.classList.contains('popup__photo')){
-        item.classList.add('popup_opened');
-    }
 }
 
 //Функция закрытия попапа
@@ -148,7 +137,11 @@ popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
 
 addButton.addEventListener('click', () => openPopup(updatePopupContainer));
-editButton.addEventListener('click', () => openPopup(editPopupContainer));
+editButton.addEventListener('click', function () {
+    openPopup(editPopupContainer);
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileSubtitle.textContent;
+});
 
 clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
 clsButtonEdit.addEventListener('click', () => closePopup(editPopupContainer));
