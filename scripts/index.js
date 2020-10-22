@@ -11,6 +11,7 @@ const updatePopupContainer = document.querySelector('.popup_update');
 const popupFullScreen = document.querySelector('.popup__photo-fullscreen');
 const popupPhotoContainer = document.querySelector('.popup__photo');
 const popupPhotoTitle = document.querySelector('.popup__photo-title');
+const popupContent = document.querySelector('.popup__content');
 
 
 //Формы
@@ -85,7 +86,7 @@ function creatGridItem(nameElement, linkElement) {
     imageButton.addEventListener('click', function () {
         popupFullScreen.src = linkElement;
         popupPhotoTitle.textContent = nameElement;
-        openPopup(popupPhotoContainer);
+        togglePopup(popupPhotoContainer);
     });
 
     return photoGridItem;
@@ -101,14 +102,24 @@ function renderCard(array) {
 //Вызов функции создания карточки
 renderCard(initialCards);
 
-//Функция открытия попап
-function openPopup(item) {
-    item.classList.add('popup_opened')
+// Закрытие по клику на ESC
+function escpClose(item) {
+
 }
 
-//Функция закрытия попапа
-function closePopup(item) {
-    item.classList.remove('popup_opened');
+// Тогл попап
+function togglePopup(item) { 
+    item.classList.toggle('popup_opened');
+}
+
+// Клик по оверлей
+function clickOnOverlay(item) { 
+    const popup = item.currentTarget;
+    if (item.target !== popup){
+        return;
+    } else {
+        togglePopup(popup);
+    }   
 }
 
 //Функция для редактирования формы профиля
@@ -116,7 +127,7 @@ function editProfile (evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value; 
-    closePopup(editPopupContainer);
+    togglePopup(editPopupContainer);
 }
 
 //Функция на добавление новой карточки
@@ -125,20 +136,23 @@ function addCard (evt) {
     photoGrid.prepend(creatGridItem(titleInput.value, linkInput.value));
     titleInput.value = "";
     linkInput.value = "";
-    closePopup(updatePopupContainer);
+    togglePopup(updatePopupContainer);
 }
 
 //Вешаю обработчики на кнопки
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
-
-addButton.addEventListener('click', () => openPopup(updatePopupContainer));
+addButton.addEventListener('click', () => togglePopup(updatePopupContainer));
 editButton.addEventListener('click', function () {
-    openPopup(editPopupContainer);
+    togglePopup(editPopupContainer);
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
 });
 
-clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
-clsButtonEdit.addEventListener('click', () => closePopup(editPopupContainer));
-clsButtonUpdate.addEventListener('click', () => closePopup(updatePopupContainer));
+editPopupContainer.addEventListener('click', clickOnOverlay);
+updatePopupContainer.addEventListener('click', clickOnOverlay);
+popupPhotoContainer.addEventListener('click', clickOnOverlay);
+
+clsButtonFullScreen.addEventListener('click', () => togglePopup(popupPhotoContainer));
+clsButtonEdit.addEventListener('click', () => togglePopup(editPopupContainer));
+clsButtonUpdate.addEventListener('click', () => togglePopup(updatePopupContainer));
