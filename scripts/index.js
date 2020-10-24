@@ -5,6 +5,7 @@ const clsButtonEdit = document.querySelector('.popup__close-btn_edit');
 const clsButtonUpdate = document.querySelector('.popup__close-btn_update');
 const clsButtonFullScreen = document.querySelector('.popup__close-btn_photo-fullscreen');
 
+
 // Попапы
 const editPopupContainer = document.querySelector('.popup_edit');
 const updatePopupContainer = document.querySelector('.popup_update');
@@ -12,7 +13,8 @@ const popupFullScreen = document.querySelector('.popup__photo-fullscreen');
 const popupPhotoContainer = document.querySelector('.popup__photo');
 const popupPhotoTitle = document.querySelector('.popup__photo-title');
 const popupContent = document.querySelector('.popup__content');
-
+const popupContainer = document.querySelector('.popup__container');
+const popup = document.querySelector('.popup');
 
 //Формы
 const popupFormEdit = document.querySelector('.popup__form_edit');
@@ -86,7 +88,7 @@ function creatGridItem(nameElement, linkElement) {
     imageButton.addEventListener('click', function () {
         popupFullScreen.src = linkElement;
         popupPhotoTitle.textContent = nameElement;
-        togglePopup(popupPhotoContainer);
+        openPopup(popupPhotoContainer);
     });
 
     return photoGridItem;
@@ -102,24 +104,37 @@ function renderCard(array) {
 //Вызов функции создания карточки
 renderCard(initialCards);
 
-// Закрытие по клику на ESC
-function escpClose(item) {
-
-}
-
-// Тогл попап
-function togglePopup(item) { 
-    item.classList.toggle('popup_opened');
-}
-
 // Клик по оверлей
 function clickOnOverlay(item) { 
     const popup = item.currentTarget;
     if (item.target !== popup){
         return;
     } else {
-        togglePopup(popup);
+        closePopup(popup)
     }   
+}
+
+//проверяем клик по esc
+function escpListener(evt) {
+    if (evt.key === 'Escape'){
+        console.log( 'escape pressed' ); 
+    }
+    (editPopupContainer.classList.contains('popup_opened')) ? closePopup(editPopupContainer) : 
+        (updatePopupContainer.classList.contains('popup_opened')) ? closePopup(updatePopupContainer) :
+            closePopup(popupPhotoContainer);
+
+}
+
+//Функция открытия попап
+function openPopup(item) {
+    document.addEventListener('keydown', escpListener);
+    item.classList.add('popup_opened')
+}
+
+//Функция закрытия попапа
+function closePopup(item) {
+    document.removeEventListener('keydown', escpListener);
+    item.classList.remove('popup_opened');
 }
 
 //Функция для редактирования формы профиля
@@ -127,7 +142,6 @@ function editProfile (evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value; 
-    togglePopup(editPopupContainer);
 }
 
 //Функция на добавление новой карточки
@@ -136,23 +150,21 @@ function addCard (evt) {
     photoGrid.prepend(creatGridItem(titleInput.value, linkInput.value));
     titleInput.value = "";
     linkInput.value = "";
-    togglePopup(updatePopupContainer);
 }
 
 //Вешаю обработчики на кнопки
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
-addButton.addEventListener('click', () => togglePopup(updatePopupContainer));
+addButton.addEventListener('click', () => openPopup(updatePopupContainer));
 editButton.addEventListener('click', function () {
-    togglePopup(editPopupContainer);
+    openPopup(editPopupContainer);
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
 });
-
 editPopupContainer.addEventListener('click', clickOnOverlay);
 updatePopupContainer.addEventListener('click', clickOnOverlay);
 popupPhotoContainer.addEventListener('click', clickOnOverlay);
+clsButtonFullScreen.addEventListener('click', () => closePopup(popupPhotoContainer));
+clsButtonEdit.addEventListener('click', () => closePopup(editPopupContainer));
+clsButtonUpdate.addEventListener('click', () => closePopup(updatePopupContainer));
 
-clsButtonFullScreen.addEventListener('click', () => togglePopup(popupPhotoContainer));
-clsButtonEdit.addEventListener('click', () => togglePopup(editPopupContainer));
-clsButtonUpdate.addEventListener('click', () => togglePopup(updatePopupContainer));
