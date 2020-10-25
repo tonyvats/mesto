@@ -4,7 +4,7 @@ const addButton = document.querySelector('.profile__add-btn');
 const clsButtonEdit = document.querySelector('.popup__close-btn_edit');
 const clsButtonUpdate = document.querySelector('.popup__close-btn_update');
 const clsButtonFullScreen = document.querySelector('.popup__close-btn_photo-fullscreen');
-
+const safeButton = document.querySelector('.popup__save-btn');
 
 // Попапы
 const editPopupContainer = document.querySelector('.popup_edit');
@@ -38,65 +38,46 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const photoGrid = document.querySelector('.photo-grid');
 const photoGridItemTemplate = document.querySelector('#photo-grid__item-template').content;
 
-   
-
-//Мок данных пока не подключили сервер
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
 
 function creatGridItem(nameElement, linkElement) {
     //клонируем template блок
     const photoGridItem = photoGridItemTemplate.cloneNode(true);
+    //наполняем содержимым
     photoGridItem.querySelector('.photo-grid__image').src = linkElement;
     photoGridItem.querySelector('.photo-grid__title').textContent = nameElement;
     
     //Кнопки лайка, удаления и фулскрина создаю здесь. Кажется, так логичнее.
     //Функция создает карточку и сразу все неоходимые кнопки. В итоге у каждой карточки своя кнопка. 
     const likeButton = photoGridItem.querySelector('.photo-grid__like-btn');
-    likeButton.addEventListener('click', function (evt) {
-        evt.target.classList.toggle('photo-grid__like-btn_active')
-    }); 
-
     const deleteButton = photoGridItem.querySelector('.photo-grid__delete-btn');
-    deleteButton.addEventListener('click', function () {
-        const listItem = deleteButton.closest('.photo-grid__item');    
-        listItem.remove();
-    });
-
     const imageButton = photoGridItem.querySelector('.photo-grid__image'); 
-    imageButton.addEventListener('click', function () {
-        popupFullScreen.src = linkElement;
-        popupPhotoTitle.textContent = nameElement;
-        openPopup(popupPhotoContainer);
-    });
+
+    // Вешаем оброботчики
+    likeButton.addEventListener('click', handleLikeIcon);
+    deleteButton.addEventListener('click', () => handleDeleteCard(deleteButton));
+    imageButton.addEventListener('click', () => handlePreviewPicture(linkElement, nameElement));
 
     return photoGridItem;
 }
+
+
+function handleLikeIcon(evt) {
+    //изменяем иконку лайка 
+    evt.target.classList.toggle('photo-grid__like-btn_active')
+};
+
+function handleDeleteCard(item) {
+    //удаляем карточку
+    const listItem = item.closest('.photo-grid__item');    
+    listItem.remove();
+};
+
+function handlePreviewPicture(linkItem, nameItem) {
+    //открывает попап с картинкой
+    popupFullScreen.src = linkItem;
+    popupPhotoTitle.textContent = nameItem;
+    openPopup(popupPhotoContainer);
+};
 
 //Функция создания карточки
 function renderCard(array) {
@@ -104,9 +85,6 @@ function renderCard(array) {
         photoGrid.append(creatGridItem(element.name, element.link));
     });
 }
-
-//Вызов функции создания карточки
-renderCard(initialCards);
 
 // Клик по оверлей
 function clickOnOverlay(item) { 
@@ -120,11 +98,8 @@ function clickOnOverlay(item) {
 
 //проверяем клик по esc
 function escpListener(evt) {
-    if (evt.key === 'Escape'){
-        (editPopupContainer.classList.contains('popup_opened')) ? closePopup(editPopupContainer) : 
-        (updatePopupContainer.classList.contains('popup_opened')) ? closePopup(updatePopupContainer) :
-            closePopup(popupPhotoContainer);
-    }
+    const popup = document.querySelector('.popup_opened');
+    return (evt.key === 'Escape') ? closePopup(popup) : false;
 }
 
 //Функция открытия попап

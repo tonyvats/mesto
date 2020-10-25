@@ -9,40 +9,40 @@ const validationParams = {
   }; 
 
 //Обработчик для показа ошибки
-function showInputError(formElement, inputElement, errorMesssage) {
+function showInputError(formElement, inputElement, errorMesssage, {inputErrorClass, errorClass}) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add(validationParams.inputErrorClass);
+    inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMesssage; 
-    errorElement.classList.add(validationParams.errorClass);
+    errorElement.classList.add(errorClass);
   };
   
   //Обработчик для скрытие ошибки
-  function hideInputError(formElement, inputElement) {
+  function hideInputError(formElement, inputElement, {inputErrorClass, errorClass}) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove(validationParams.inputErrorClass);
+    inputElement.classList.remove(inputErrorClass);
     errorElement.textContent = ""; 
-    errorElement.classList.remove(validationParams.errorClass);
+    errorElement.classList.remove(errorClass);
 
   };
   
   // Проверяем валидность данных в поле
-  function isValid(formElement, inputElement) {
+  function isValid(formElement, inputElement, {...rest}) {
     if (!inputElement.validity.valid) {
-        showInputError(formElement, inputElement, inputElement.validationMessage);
+        showInputError(formElement, inputElement, inputElement.validationMessage, rest);
     } else {
-        hideInputError(formElement, inputElement);
+        hideInputError(formElement, inputElement, rest);
     }
   };
   
   // Лисенер для элементов формы
-  function setEventListeners(formElement, validationParams) {
-      const inputList = Array.from(formElement.querySelectorAll(validationParams.inputSelector));
-      const buttonElement = formElement.querySelector(validationParams.submitButtonSelector);
-      toggleButtonState(inputList, buttonElement);
+  function setEventListeners(formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, ...rest}) {
+      const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+      const buttonElement = formElement.querySelector(submitButtonSelector);
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
       inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
-          isValid(formElement, inputElement)
-          toggleButtonState(inputList, buttonElement);
+          toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+          isValid(formElement, inputElement, rest)
         });
       });
     };
@@ -55,23 +55,27 @@ function showInputError(formElement, inputElement, errorMesssage) {
     };
   
   // Обработчик доступности поля
-function toggleButtonState (inputList, buttonElement) {
-    if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add(validationParams.inactiveButtonClass);
-    } else {
-      buttonElement.classList.remove(validationParams.inactiveButtonClass);
-    }
-  };
-  
+function toggleButtonState (inputList, buttonElement, inactiveButtonClass) {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
+};
+
+
   // Лисенер для всех форм
-  function enableValidation(validationParams) {
-      const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
-        formList.forEach((formElement) => {
-        formElement.addEventListener('submit', (evt) => {
-          evt.preventDefault();
-        });
-        setEventListeners(formElement, validationParams);
+  function enableValidation({formSelector, ...rest}) {
+    const formList = Array.from(document.querySelectorAll(formSelector));
+      formList.forEach((formElement) => {
+      setEventListeners(formElement, rest);
+      formElement.addEventListener('submit', (evt) => {
+        evt.preventDefault();
       });
+      setEventListeners(formElement, rest);
+    });
   };
     
   // Вызываем лисенер для всех полей 
