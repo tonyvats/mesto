@@ -32,9 +32,15 @@
                 <button type="button" class="popup__close-btn popup__close-btn_edit"></button> 
                 <div class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form name="form" method="POST" class="popup__form_edit">
-                        <input type="text" name="popup__input_name" value="" class="popup__input popup__input_name">
-                        <input type="text" name="popup__input_job" value="" class="popup__input popup__input_job">  
+                    <form name="edit" method="POST" class="popup__form popup__form_edit" novalidate>
+                        <div class="popup__field">
+                            <input type="text" id="empty-name-input" name="nameInput" value="" class="popup__input popup__input_name" required minlength="2" maxlength="40">
+                            <span id="empty-name-input-error"></span> 
+                        </div>
+                        <div class="popup__field">
+                            <input type="text" id="empty-job-input" name="jobInput" value="" class="popup__input popup__input_job" required minlength="2" maxlength="200">
+                            <span id="empty-job-input-error"></span>   
+                        </div>
                         <button type="submit" class="popup__save-btn">Отправить</button> 
                     </form>
                 </div>
@@ -45,9 +51,15 @@
                 <button type="button" class="popup__close-btn popup__close-btn_update"></button> 
                 <div class="popup__content">
                     <h2 class="popup__title">Новое место</h2>
-                    <form name="form" method="POST" class="popup__form_update">
-                        <input type="text" name="popup__input_title" placeholder="Название" class="popup__input popup__input_title">
-                        <input type="text" name="popup__input_link" placeholder="Ссылка на картинку" class="popup__input popup__input_link">  
+                    <form name="update" method="POST" class="popup__form popup__form_update">
+                        <div class="popup__field">
+                            <input type="text" id="empty-title-input" name="titleInput" placeholder="Название" class="popup__input popup__input_title" required minlength="2" maxlength="30">
+                            <span id="empty-title-input-error"></span> 
+                        </div>
+                        <div class="popup__field">
+                            <input type="url" id="empty-link-input" name="linkInput" placeholder="Ссылка на картинку" class="popup__input popup__input_link" required>   
+                            <span id="empty-link-input-error"></span> 
+                        </div>
                         <button type="submit" class="popup__save-btn">Создать</button> 
                     </form>
                 </div>
@@ -73,5 +85,6 @@
         </div>  
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>

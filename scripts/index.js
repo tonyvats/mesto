@@ -17,14 +17,18 @@ const popupContainer = document.querySelector('.popup__container');
 const popup = document.querySelector('.popup');
 
 //Формы
-const popupFormEdit = document.querySelector('.popup__form_edit');
-const popupFormUpdate = document.querySelector('.popup__form_update');
+const popupFormEdit = document.forms.edit;
+const popupFormUpdate = document.forms.update;
+
 
 //Инпуты
-const nameInput = document.querySelector('.popup__input_name');
-const jobInput = document.querySelector('.popup__input_job');
-const titleInput = document.querySelector('.popup__input_title');
-const linkInput = document.querySelector('.popup__input_link');
+const nameInput= popupFormEdit.elements.nameInput;
+const jobInput= popupFormEdit.elements.jobInput;
+const emptyJobInputError = popupFormEdit.querySelector(`#${jobInput.id}-error`); 
+const titleInput= popupFormUpdate.elements.titleInput;
+const emptyTitleInputError = popupFormUpdate.querySelector(`#${titleInput.id}-error`); 
+const linkInput= popupFormUpdate.elements.linkInput;
+const emptyLinkInputError = popupFormUpdate.querySelector(`#${linkInput.id}-error`); 
 
 //Профиль
 const profileTitle = document.querySelector('.profile__title');
@@ -33,8 +37,8 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 //Грид
 const photoGrid = document.querySelector('.photo-grid');
 const photoGridItemTemplate = document.querySelector('#photo-grid__item-template').content;
-// const photoGridItem = photoGridItemTemplate.cloneNode(true);
 
+   
 
 //Мок данных пока не подключили сервер
 const initialCards = [
@@ -117,12 +121,10 @@ function clickOnOverlay(item) {
 //проверяем клик по esc
 function escpListener(evt) {
     if (evt.key === 'Escape'){
-        console.log( 'escape pressed' ); 
-    }
-    (editPopupContainer.classList.contains('popup_opened')) ? closePopup(editPopupContainer) : 
+        (editPopupContainer.classList.contains('popup_opened')) ? closePopup(editPopupContainer) : 
         (updatePopupContainer.classList.contains('popup_opened')) ? closePopup(updatePopupContainer) :
             closePopup(popupPhotoContainer);
-
+    }
 }
 
 //Функция открытия попап
@@ -142,7 +144,9 @@ function editProfile (evt) {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value; 
+    closePopup(editPopupContainer);
 }
+
 
 //Функция на добавление новой карточки
 function addCard (evt) {
@@ -150,9 +154,10 @@ function addCard (evt) {
     photoGrid.prepend(creatGridItem(titleInput.value, linkInput.value));
     titleInput.value = "";
     linkInput.value = "";
+    closePopup(updatePopupContainer);
 }
 
-//Вешаю обработчики на кнопки
+//Вешаю слушателей
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
 addButton.addEventListener('click', () => openPopup(updatePopupContainer));
