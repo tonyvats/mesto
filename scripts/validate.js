@@ -62,12 +62,10 @@ function toggleButtonState (inputList, buttonElement) {
       buttonElement.classList.remove(validationParams.inactiveButtonClass);
     }
   };
-
-
   
   // Лисенер для всех форм
-  function enableValidation(item) {
-      const formList = Array.from(document.querySelectorAll(item.formSelector));
+  function enableValidation(validationParams) {
+      const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
         formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
           evt.preventDefault();
