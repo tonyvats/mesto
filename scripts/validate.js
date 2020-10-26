@@ -3,6 +3,8 @@ const validationParams = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__save-btn',
+    // submitEditButtonSelector: '.popup__save-btn_edit',
+    // submitUpdateButtonSelector: '.popup__save-btn_update',
     inactiveButtonClass: 'popup__save-btn_inactive',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__unput-error_active'
@@ -39,6 +41,8 @@ function showInputError(formElement, inputElement, errorMesssage, {inputErrorCla
       const inputList = Array.from(formElement.querySelectorAll(inputSelector));
       const buttonElement = formElement.querySelector(submitButtonSelector);
       toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+      // buttonEditElement.disabled = true;
+      console.log(buttonElement.classList);
       inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
           toggleButtonState(inputList, buttonElement, inactiveButtonClass);
@@ -58,10 +62,12 @@ function showInputError(formElement, inputElement, errorMesssage, {inputErrorCla
 function toggleButtonState (inputList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(inactiveButtonClass);
+    console.log(buttonElement.classList);
     buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.disabled = false;
+    console.log(buttonElement.classList);
   }
 };
 

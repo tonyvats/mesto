@@ -4,7 +4,7 @@ const addButton = document.querySelector('.profile__add-btn');
 const clsButtonEdit = document.querySelector('.popup__close-btn_edit');
 const clsButtonUpdate = document.querySelector('.popup__close-btn_update');
 const clsButtonFullScreen = document.querySelector('.popup__close-btn_photo-fullscreen');
-const safeButton = document.querySelector('.popup__save-btn');
+const safeUpdateButton = document.querySelector('.popup__save-btn_update');
 
 // Попапы
 const editPopupContainer = document.querySelector('.popup_edit');
@@ -135,7 +135,12 @@ function addCard (evt) {
 //Вешаю слушателей
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
-addButton.addEventListener('click', () => openPopup(updatePopupContainer));
+// addButton.addEventListener('click', () => openPopup(updatePopupContainer));
+addButton.addEventListener('click', function() {
+    openPopup(updatePopupContainer)
+    safeUpdateButton.classList.add('popup__save-btn_inactive');
+    safeUpdateButton.setAttribute('disabled', 'true');
+});
 editButton.addEventListener('click', function () {
     openPopup(editPopupContainer);
     nameInput.value = profileTitle.textContent;
