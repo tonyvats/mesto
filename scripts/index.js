@@ -135,7 +135,6 @@ function addCard (evt) {
 //Вешаю слушателей
 popupFormEdit.addEventListener('submit', editProfile);
 popupFormUpdate.addEventListener('submit', addCard);
-// addButton.addEventListener('click', () => openPopup(updatePopupContainer));
 addButton.addEventListener('click', function() {
     openPopup(updatePopupContainer)
     safeUpdateButton.classList.add('popup__save-btn_inactive');
