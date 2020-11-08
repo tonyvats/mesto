@@ -1,5 +1,5 @@
 //Мок данных пока не подключили сервер
-const initialCards = [
+export const initialCards = [
     {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -26,5 +26,11 @@ const initialCards = [
     }
 ];
 
-//Вызов функции создания карточки
-renderCard(initialCards);
+export const validationParams = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-btn',
+    inactiveButtonClass: 'popup__save-btn_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__unput-error_active'
+  };

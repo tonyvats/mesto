@@ -39,7 +39,6 @@ function showInputError(formElement, inputElement, errorMesssage, {inputErrorCla
       const inputList = Array.from(formElement.querySelectorAll(inputSelector));
       const buttonElement = formElement.querySelector(submitButtonSelector);
       toggleButtonState(inputList, buttonElement, inactiveButtonClass);
-      console.log(buttonElement.classList);
       inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
           toggleButtonState(inputList, buttonElement, inactiveButtonClass);
@@ -68,7 +67,7 @@ function toggleButtonState (inputList, buttonElement, inactiveButtonClass) {
 
 
   // Лисенер для всех форм
-  function enableValidation({formSelector, ...rest}) { //Решил переписать с использованием rest
+  function enableValidation({formSelector, ...rest}) {
     const formList = Array.from(document.querySelectorAll(formSelector));
       formList.forEach((formElement) => {
       setEventListeners(formElement, rest);
