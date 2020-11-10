@@ -63,8 +63,8 @@ function escpListener(evt) {
 
 //Функция открытия попап
 export function openPopup(item) {
-    const editFormValidator = new FormValidator(validationParams, item);
-    editFormValidator.enableValidation();
+    const formValidator = new FormValidator(validationParams, item);
+    formValidator.enableValidation();
     document.addEventListener('keydown', escpListener);
     item.classList.add('popup_opened')
 
