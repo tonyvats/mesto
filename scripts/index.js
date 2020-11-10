@@ -45,6 +45,11 @@ initialCards.forEach((item) => {
     photoGrid.append(cardElement);
 }); 
 
+const editFormValidator = new FormValidator(validationParams, popupFormEdit);
+editFormValidator.enableValidation();
+const updateFormValidator = new FormValidator(validationParams, popupFormUpdate);
+updateFormValidator.enableValidation();
+
 // Клик по оверлей
 function clickOnOverlay(item) { 
     const popup = item.currentTarget;
@@ -63,8 +68,6 @@ function escpListener(evt) {
 
 //Функция открытия попап
 export function openPopup(item) {
-    const formValidator = new FormValidator(validationParams, item);
-    formValidator.enableValidation();
     document.addEventListener('keydown', escpListener);
     item.classList.add('popup_opened')
 
