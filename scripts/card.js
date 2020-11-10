@@ -19,14 +19,14 @@ export default class Card {
     
     _handleLikeIcon() {
         this._element.querySelector('.photo-grid__like-btn').classList.toggle('photo-grid__like-btn_active');
-    };
+    }
 
     _handleDeleteCard() {
         this._element.closest('.photo-grid__item').addEventListener('click', () => {
             const listItem = this._element.closest('.photo-grid__item');    
             listItem.remove();
         });
-    };
+    }
   
     _handlePreviewPicture() {
         popupFullScreen.src = this._linkElement;

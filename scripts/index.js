@@ -1,4 +1,4 @@
-import { initialCards } from './constants.js';
+import { initialCards, validationParams } from './constants.js';
 import Card from './card.js';
 import FormValidator from './FormValidator.js';
 
@@ -25,7 +25,7 @@ const popupFormUpdate = document.forms.update;
 
 
 //Инпуты
-const nameInput= popupFormEdit.elements.nameInput;
+export const nameInput= popupFormEdit.elements.nameInput;
 const jobInput= popupFormEdit.elements.jobInput;
 const titleInput= popupFormUpdate.elements.titleInput;
 const linkInput= popupFormUpdate.elements.linkInput;
@@ -38,14 +38,12 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const photoGrid = document.querySelector('.photo-grid');
 
 
-
-
+// Создаем карточки
 initialCards.forEach((item) => {
     const card = new Card(item, '#photo-grid__item-template');
     const cardElement = card.generateCard();
     photoGrid.append(cardElement);
 }); 
-
 
 // Клик по оверлей
 function clickOnOverlay(item) { 
@@ -65,7 +63,8 @@ function escpListener(evt) {
 
 //Функция открытия попап
 export function openPopup(item) {
-
+    const editFormValidator = new FormValidator(validationParams, item);
+    editFormValidator.enableValidation();
     document.addEventListener('keydown', escpListener);
     item.classList.add('popup_opened')
 
