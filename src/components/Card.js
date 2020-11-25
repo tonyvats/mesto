@@ -1,9 +1,8 @@
-import { openPopup, popupFullScreen, popupPhotoTitle, popupPhotoContainer } from './index.js';
-
 export default class Card {
-    constructor(data, cardSelector) {
-        this._linkElement = data.link;
-        this._nameElement = data.name;
+    constructor({ data, handleCardClick }, cardSelector) {
+        this._data = data;
+        this._handleCardClick = handleCardClick;
+
         this._cardSelector = cardSelector;
     }
 
@@ -27,17 +26,15 @@ export default class Card {
             listItem.remove();
         });
     }
-  
-    _handlePreviewPicture() {
-        popupFullScreen.src = this._linkElement;
-        popupPhotoTitle.textContent = this._nameElement;
-        openPopup(popupPhotoContainer);
-    };
+
+    handleCardClick() {
+        this._handleCardClick(this._data);
+    }
 
     generateCard() {
         this._element = this._getTemplate();
-        this._element.querySelector('.photo-grid__image').src = this._linkElement;
-        this._element.querySelector('.photo-grid__title').textContent = this._nameElement;
+        this._element.querySelector('.photo-grid__image').src = this._data.link;
+        this._element.querySelector('.photo-grid__title').textContent = this._data.name;
         
         this._element.querySelector('.photo-grid__delete-btn')
         .addEventListener('click', () => this._handleDeleteCard());
@@ -46,7 +43,7 @@ export default class Card {
         .addEventListener('click', () => this._handleLikeIcon());
 
         this._element.querySelector('.photo-grid__image')
-        .addEventListener('click', () => this._handlePreviewPicture());
+        .addEventListener('click', () => this.handleCardClick());
 
         return this._element;
     }

@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 <body>
     <div class="page">
         <header class="header">
-            <img class="logo" src="./images/logo.svg" alt="изображение лого">
+            <img class="logo" src="<%=require('./images/logo.svg')%>" alt="изображение лого">
         </header>
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="./images/avatar.jpg" alt="фото аватара">
+                <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="фото аватара">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__subtitle">Исследователь океана</p>
@@ -29,7 +28,7 @@
         </footer>
         <div class="popup popup_edit">
             <div class="popup__container">
-                <button type="button" class="popup__close-btn popup__close-btn_edit"></button> 
+                <button type="button" class="popup__close-btn"></button> 
                 <div class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <form name="edit" method="POST" class="popup__form popup__form_edit" novalidate>
@@ -48,16 +47,16 @@
         </div>
         <div class="popup popup_update">
             <div class="popup__container">
-                <button type="button" class="popup__close-btn popup__close-btn_update"></button> 
+                <button type="button" class="popup__close-btn"></button> 
                 <div class="popup__content">
                     <h2 class="popup__title">Новое место</h2>
                     <form name="update" method="POST" class="popup__form popup__form_update">
                         <div class="popup__field">
-                            <input type="text" id="empty-title-input" name="titleInput" placeholder="Название" class="popup__input popup__input_title" required minlength="2" maxlength="30">
+                            <input type="text" id="empty-title-input" name="name" placeholder="Название" class="popup__input popup__input_title" required minlength="2" maxlength="30">
                             <span id="empty-title-input-error"></span> 
                         </div>
                         <div class="popup__field">
-                            <input type="url" id="empty-link-input" name="linkInput" placeholder="Ссылка на картинку" class="popup__input popup__input_link" required>   
+                            <input type="url" id="empty-link-input" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_link" required>   
                             <span id="empty-link-input-error"></span> 
                         </div>
                         <button type="submit" class="popup__save-btn popup__save-btn_update">Создать</button> 
@@ -67,7 +66,7 @@
         </div>
         <div class="popup popup__photo">
             <div class="popup__container">
-                <button type="button" class="popup__close-btn popup__close-btn_photo-fullscreen"></button> 
+                <button type="button" class="popup__close-btn"></button> 
                 <img class="popup__photo-fullscreen" src="#" alt="фото">
                 <h2 class="popup__photo-title"></h2>
             </div>
@@ -83,9 +82,5 @@
             </div> 
         </div>  
     </template>
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/constants.js"></script>
-    <script type="module" src="./scripts/card.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
     </body>
 </html>
