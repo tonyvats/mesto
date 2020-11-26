@@ -21,10 +21,7 @@ export default class Card {
     }
 
     _handleDeleteCard() {
-        this._element.closest('.photo-grid__item').addEventListener('click', () => {
-            const listItem = this._element.closest('.photo-grid__item');    
-            listItem.remove();
-        });
+        this._element.remove();
     }
 
     handleCardClick() {

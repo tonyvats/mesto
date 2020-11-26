@@ -43,13 +43,13 @@ export default class FormValidator {
             this._isValid(formElement, inputElement)
             });
         });
-        };
+    };
     
     _hasInvalidInput(inputList) {
         return inputList.some((inputElement) => {  
             return !inputElement.validity.valid;
         })
-        };
+    };
     
     _toggleButtonState (inputList, buttonElement) {
         if (this._hasInvalidInput(inputList)) {
@@ -61,13 +61,16 @@ export default class FormValidator {
         }
     };
 
+    resetForm() {
+        this._formElement.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass);
+        this._formElement.querySelector(this._submitButtonSelector).disabled = true;
+    }
+
     enableValidation() {
-        const formList = Array.from(document.querySelectorAll(this._formSelector));
-        formList.forEach((formElement) => {
-        this._setEventListeners(formElement);
-        formElement.addEventListener('submit', (evt) => {
+
+        this._setEventListeners(this._formElement);
+        this._formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            });
         });
     };
 }
