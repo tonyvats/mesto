@@ -1,15 +1,15 @@
-const { default: Popup } = require("./Popup");
+import Popup from "./Popup"
 
 export default class PopupWithImage extends Popup{
-    constructor(popupSelector, data) {
+    constructor(popupSelector) {
         super(popupSelector);
-        this._data = data;
+        this._popupPhoto = this._popupSelector.querySelector('.popup__photo-fullscreen')
+        this._popupTitle = this._popupSelector.querySelector('.popup__photo-title')
     }
 
-    open() {
+    open(data) {
         super.open();
-
-        document.querySelector('.popup__photo-fullscreen').src = this._data.link;
-        document.querySelector('.popup__photo-title').textContent = this._data.name;
+        this._popupPhoto.src = data.link;
+        this._popupTitle.textContent = data.name;
     }
 }

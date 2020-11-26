@@ -1,9 +1,10 @@
-const { default: Popup } = require("./Popup");
+import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
     constructor( {popupSelector, handleFormSubmit} ) {
       super(popupSelector);
       this._handleFormSubmit = handleFormSubmit;
+      this._form = this._popupSelector.querySelector('.popup__form');
     }
 
     _getInputValues() {
@@ -23,12 +24,11 @@ export default class PopupWithForm extends Popup {
             });
 
         super.setEventListeners();
-        this.close();
     }
   
     close() {
         super.close();
-        this._popupSelector.querySelector('.popup__form').reset();
+        this._form.reset();
     }
 
   };
