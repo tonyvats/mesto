@@ -7,6 +7,7 @@ export default class FormValidator {
         this._inputErrorClass = validationParams.inputErrorClass;
         this._errorClass = validationParams.errorClass;
         this._formElement = formElement;
+        this._submitButton = this._formElement.querySelector(this._submitButtonSelector)
 
     }
 
@@ -61,9 +62,9 @@ export default class FormValidator {
         }
     };
 
-    resetForm() {
-        this._formElement.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass);
-        this._formElement.querySelector(this._submitButtonSelector).disabled = true;
+    disableButton() {
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.disabled = true;
     }
 
     enableValidation() {
