@@ -86,7 +86,7 @@ updatePopup.setEventListeners();
 
 addButton.addEventListener('click', function() {
     updatePopup.open();
-    updateFormValidator.resetForm();
+    updateFormValidator.disableButton();
 });
 editButton.addEventListener('click', function() {
     editPopup.open();
