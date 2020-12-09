@@ -9,4 +9,5 @@
     background-color: rgba(0, 0, 0, .5);
     opacity: 0;
     transition: opacity, height 1s, 0s 0s, 1s;
+    /* display: block; */
 }
