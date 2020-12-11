@@ -29,3 +29,4 @@ export const jobInput= popupFormEdit.elements.jobInput;
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
 export const photoGrid = '.photo-grid';
+export const escButtonCode = 'Escape';

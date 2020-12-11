@@ -30,9 +30,6 @@ import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import './index.css';
 
 
-const fullScreenPopup = new PopupWithImage(popupPhotoContainer);
-fullScreenPopup.setEventListeners(); 
-
 const api = new Api({
     url: "https://mesto.nomoreparties.co/v1/cohort-18/",
     headers: {
@@ -40,6 +37,19 @@ const api = new Api({
         'Content-Type': 'application/json'
     }
 });
+
+const getUserInfoFromServer = api.getUserInfoFromServer();
+getUserInfoFromServer.then((data) => {
+    userInfoData.setUserInfoForPopup(data);
+    userId = data._id;
+})
+.catch((err) => alert(err));
+
+const cards = api.getCardsInformation();
+cards.then((data) => {
+    cardList.renderItems(data);
+})
+.catch((err) => console.log(err));
 
 let userId = null;
 
@@ -85,24 +95,11 @@ const cardList = new Section({
     photoGrid
 );
 
-const cards = api.getCardsInformation();
-cards.then((data) => {
-    cardList.renderItems(data);
-})
-.catch((err) => console.log(err));
-
 const userInfoData = new UserInfo(
     profileTitle, 
     profileSubtitle,
     avatar
 );
-
-const getUserInfoFromServer = api.getUserInfoFromServer();
-getUserInfoFromServer.then((data) => {
-    userInfoData.setUserInfoForPopup(data);
-    userId = data._id;
-})
-.catch((err) => alert(err));
 
 const editAvatarPopup = new PopupWithForm({
     popupSelector: popupEditAvatarContainer,
@@ -159,25 +156,17 @@ const deleteCardPopup = new PopupWithSubmit({
 });
 
 function loadingButtonStatus (popup, loadingstatus) {
-    // const popupFormButton = updatePopupContainer.querySelector('.popup__save-btn')
     const popupFormButton = document.querySelector(popup).querySelector('.popup__save-btn');
-    // console.log(document.querySelector(popup));
-    // console.log(popupFormButton);
-    // console.log(popupFormButton);
+
     if (loadingstatus) {
         popupFormButton.textContent = 'Сохранение...';
     } else {
         popupFormButton.textContent = 'Сохранить';
     }
-
-
-
-    // loadingstatus ? popupFormButton.textContent = 'Сохранение...' : popupFormButton.textContent = 'Сохраненить';
 }
 
-// console.log(loadingButtonStatus(updatePopupContainer, true));
-
-
+const fullScreenPopup = new PopupWithImage(popupPhotoContainer);
+fullScreenPopup.setEventListeners();
 const editFormValidator = new FormValidator(validationParams, popupFormEdit);
 editFormValidator.enableValidation();
 const updateFormValidator = new FormValidator(validationParams, popupFormUpdate);

@@ -1,3 +1,5 @@
+import { escButtonCode } from '../utils/constants.js';
+
 export default class Popup {
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
@@ -5,7 +7,7 @@ export default class Popup {
     }
     
     _handleEscClose(evt) {
-        if (evt.key === 'Escape') {
+        if (evt.key === escButtonCode) {
             this.close();
         }
     }
